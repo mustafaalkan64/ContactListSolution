@@ -2,11 +2,17 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SeturContactList.Core.Repositories;
+using SeturContactList.Core.UnitOfWork;
+using SeturContactList.Repository;
+using SeturContactList.Repository.Repositories;
+using SeturContactList.Repository.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +38,13 @@ namespace SeturContactListSolution
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SeturContactListSolution", Version = "v1" });
             });
+
+
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IPersonsRepository, PersonsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

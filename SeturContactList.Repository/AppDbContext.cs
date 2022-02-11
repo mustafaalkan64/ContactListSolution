@@ -93,20 +93,37 @@ namespace SeturContactList.Repository
                 Name = "Mustafa",
                 Surname = "Alkan",
                 Company = "TestCompany",
-                CreatedDate = DateTime.Now,
-                PersonContacts = new List<PersonContacts>()
-                {
-                    new PersonContacts() { Id = 1,
-                        Address = "İzmir Çiğli",
-                        Email = "mustafaalkan64@gmail.com",
-                        PersonId = 1,
-                        City = "İzmir",
-                        Info = "Test Info",
-                        Phone = "+905553332211",
-                        CreatedDate = DateTime.Now}
-                }
-            }
+                CreatedDate = DateTime.Now
+            });
 
+            modelBuilder.Entity<PersonContacts>().HasData(new PersonContacts()
+            {
+                Id = 1,
+                Address = "İzmir Çiğli",
+                Email = "mustafaalkan64@gmail.com",
+                PersonId = 1,
+                City = "İzmir",
+                Town = "Çiğli",
+                Info = "Test Info",
+                Phone = "+905553332211",
+                Lat = 34,
+                Long = 27,
+                CreatedDate = DateTime.Now
+            },
+            new PersonContacts()
+            {
+                Id = 2,
+                Address = "İzmir Bornova",
+                Email = "mustafaalkan64@gmail.com",
+                PersonId = 1,
+                City = "İzmir",
+                Town = "Bornova",
+                Info = "Test Info",
+                Phone = "+905553332212",
+                Lat = 35,
+                Long = 28,
+                CreatedDate = DateTime.Now
+            }
             );
 
             base.OnModelCreating(modelBuilder);

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace SeturContactList.Core.Entities
 {
-    public class Reports
+    public class Reports: BaseEntity
     {
         public Guid UUID { get; set; }
-        public DateTime CreatedDate { get; set; }
         public ReportStatusEnum ReportStatus { get; set; }
     }
 }
