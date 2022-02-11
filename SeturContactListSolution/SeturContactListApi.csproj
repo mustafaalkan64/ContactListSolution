@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SeturContactList.Repository\SeturContactList.Repository.csproj" />
+    <ProjectReference Include="..\SeturContactList.Service\SeturContactList.Service.csproj" />
   </ItemGroup>
 
 </Project>
