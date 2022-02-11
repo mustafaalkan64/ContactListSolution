@@ -67,19 +67,14 @@ namespace SeturContactListApi.Controllers
             return CreateActionResult(CustomResponseDto<PersonDto>.Success(201, personsDto));
         }
 
-        //// DELETE api/products/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Remove(int id)
-        //{
-        //    var product = await _service.GetByIdAsync(id);
-
-
-
-
-        //    await _service.RemoveAsync(product);
-
-        //    return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
-        //}
+        // DELETE api/persons/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Remove(int id)
+        {
+            var person = await _service.GetByIdAsync(id);
+            await _service.RemoveAsync(person);
+            return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
+        }
 
     }
 }

@@ -18,6 +18,7 @@ using SeturContactList.Repository.Repositories;
 using SeturContactList.Repository.UnitOfWork;
 using SeturContactList.Service.Mapping;
 using SeturContactList.Service.Services;
+using SeturContactListApi.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,6 +77,8 @@ namespace SeturContactListSolution
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

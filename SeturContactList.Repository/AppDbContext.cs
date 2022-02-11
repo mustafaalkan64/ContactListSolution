@@ -96,6 +96,16 @@ namespace SeturContactList.Repository
                 CreatedDate = DateTime.Now
             });
 
+            modelBuilder.Entity<Persons>().HasData(new Persons()
+            {
+                Id = 2,
+                UUID = Guid.NewGuid(),
+                Name = "Ahmet",
+                Surname = "Alkan",
+                Company = "TestCompany1",
+                CreatedDate = DateTime.Now
+            });
+
             modelBuilder.Entity<PersonContacts>().HasData(new PersonContacts()
             {
                 Id = 1,
@@ -116,6 +126,34 @@ namespace SeturContactList.Repository
                 Address = "İzmir Bornova",
                 Email = "mustafaalkan64@gmail.com",
                 PersonId = 1,
+                City = "İzmir",
+                Town = "Bornova",
+                Info = "Test Info",
+                Phone = "+905553332212",
+                Lat = 35,
+                Long = 28,
+                CreatedDate = DateTime.Now
+            },
+             new PersonContacts()
+             {
+                 Id = 3,
+                 Address = "İzmir Çiğli",
+                 Email = "mustafaalkan64@gmail.com",
+                 PersonId = 2,
+                 City = "İzmir",
+                 Town = "Çiğli",
+                 Info = "Test Info",
+                 Phone = "+905553332211",
+                 Lat = 34,
+                 Long = 27,
+                 CreatedDate = DateTime.Now
+             },
+            new PersonContacts()
+            {
+                Id = 4,
+                Address = "İzmir Bornova",
+                Email = "mustafaalkan64@gmail.com",
+                PersonId = 2,
                 City = "İzmir",
                 Town = "Bornova",
                 Info = "Test Info",
