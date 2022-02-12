@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace SeturContactList.Core.Repositories
 {
-    public interface IPersonsRepository : IGenericRepository<Persons>
+    public interface IPersonContactRepository : IGenericRepository<PersonContacts>
     {
-        Task<List<Persons>> GetPersonsWithPersonContacts();
-        Task<Persons> GetPersonsWithPersonContactsByPersonId(int personId);
     }
 }

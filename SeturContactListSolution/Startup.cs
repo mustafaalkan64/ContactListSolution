@@ -18,6 +18,7 @@ using SeturContactList.Repository.Repositories;
 using SeturContactList.Repository.UnitOfWork;
 using SeturContactList.Service.Mapping;
 using SeturContactList.Service.Services;
+using SeturContactListApi.Filters;
 using SeturContactListApi.Middlewares;
 using System;
 using System.Collections.Generic;
@@ -57,9 +58,13 @@ namespace SeturContactListSolution
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IGenericRepository<Persons>, GenericRepository<Persons>>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
             services.AddTransient<IPersonsRepository, PersonsRepository>();
+            services.AddTransient<IPersonContactRepository, PersonContactRepository>();
+            services.AddTransient<IPersonContactService, PersonContactService>();
             services.AddTransient<IPersonsService, PersonsService>();
+            services.AddScoped(typeof(NotFoundFilter<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeturContactList.Core.Dtos
 {
-    public class PersonContactListDto: BaseDto
+    public class PersonContactDto: BaseDto
     {
         public string Email { get; set; }
         public string Phone { get; set; }

@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 
 namespace SeturContactList.Core.Services
 {
-    public interface IPersonsService : IService<Persons>
+    public interface IPersonContactService : IService<PersonContacts>
     {
-        Task<CustomResponseDto<List<PersonsWithPersonContractListDto>>> GetPersonsWithPersonContractList();
-        Task<Persons> GetPersonsWithPersonContractListByPersoId(int personId);
     }
 }

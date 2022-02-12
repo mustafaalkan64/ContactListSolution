@@ -30,5 +30,11 @@ namespace SeturContactList.Service.Services
             var personsDto = _mapper.Map<List<PersonsWithPersonContractListDto>>(persons);
             return CustomResponseDto<List<PersonsWithPersonContractListDto>>.Success(200, personsDto);
         }
+
+        public async Task<Persons> GetPersonsWithPersonContractListByPersoId(int personId)
+        {
+            var person = await _personRepository.GetPersonsWithPersonContactsByPersonId(personId);
+            return person;
+        }
     }
 }

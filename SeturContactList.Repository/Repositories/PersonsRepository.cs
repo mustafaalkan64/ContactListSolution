@@ -20,5 +20,10 @@ namespace SeturContactList.Repository.Repositories
         {
             return await _context.Persons.Include(x => x.PersonContacts).ToListAsync();
         }
+
+        public async Task<Persons> GetPersonsWithPersonContactsByPersonId(int personId)
+        {
+            return await _context.Persons.Where(x => x.Id == personId).Include(x => x.PersonContacts).FirstOrDefaultAsync();
+        }
     }
 }

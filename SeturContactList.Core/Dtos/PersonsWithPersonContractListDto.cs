@@ -8,6 +8,6 @@ namespace SeturContactList.Core.Dtos
 {
     public class PersonsWithPersonContractListDto: PersonDto
     {
-        public List<PersonContactListDto> PersonContacts { get; set; }
+        public List<PersonContactDto> PersonContacts { get; set; }
     }
 }
