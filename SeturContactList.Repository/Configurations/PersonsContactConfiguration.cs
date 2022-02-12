@@ -11,7 +11,13 @@ namespace SeturContactList.Repository.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Phone).IsRequired().HasMaxLength(50);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(50);
-            builder.Property(x => x.Address).IsRequired().HasMaxLength(150);
+            builder.Property(x => x.City).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.Town).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.Address).HasMaxLength(500);
+            builder.Property(x => x.Info).HasMaxLength(500);
+            builder.Property(x => x.PersonId).IsRequired();
+            builder.Property(x => x.Lat).HasColumnType("decimal(18,2)");
+            builder.Property(x => x.Long).HasColumnType("decimal(18,2)");
             builder.HasOne(x => x.Person).WithMany(x => x.PersonContacts).HasForeignKey(x => x.PersonId);
 
         }
