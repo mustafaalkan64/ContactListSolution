@@ -11,6 +11,6 @@ namespace SeturContactList.Core.Services
     public interface IPersonsService : IService<Persons>
     {
         Task<CustomResponseDto<List<PersonsWithPersonContractListDto>>> GetPersonsWithPersonContractList();
-        Task<Persons> GetPersonsWithPersonContractListByPersoId(int personId);
+        Task<Persons> GetPersonsWithPersonContractListByPersonId(int personId);
     }
 }

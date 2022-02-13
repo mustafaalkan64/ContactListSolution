@@ -51,8 +51,12 @@ namespace SeturContactListApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var person = await _personService.GetPersonsWithPersonContractListByPersoId(id);
+            var person = await _personService.GetPersonsWithPersonContractListByPersonId(id);
             var personsDto = _mapper.Map<PersonsWithPersonContractListDto>(person);
+            if(personsDto == null)
+            {
+                return new NotFoundResult();
+            }
             return CreateActionResult(CustomResponseDto<PersonsWithPersonContractListDto>.Success(200, personsDto));
         }
 

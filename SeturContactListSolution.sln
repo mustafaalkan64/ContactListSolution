@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeturContactListApi", "SeturContactListSolution\SeturContactListApi.csproj", "{2398F16E-B743-4B89-A271-A39FE58EA643}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeturContactListApi", "SeturContactListSolution\SeturContactListApi.csproj", "{2398F16E-B743-4B89-A271-A39FE58EA643}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeturContactList.Repository", "SeturContactList.Repository\SeturContactList.Repository.csproj", "{0E303BBD-EB7C-4D76-A410-C1C0EC76E248}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeturContactList.Repository", "SeturContactList.Repository\SeturContactList.Repository.csproj", "{0E303BBD-EB7C-4D76-A410-C1C0EC76E248}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeturContactList.Core", "SeturContactList.Core\SeturContactList.Core.csproj", "{D62BFB7E-6B2C-41C1-8478-A1CDDE8C8B47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeturContactList.Core", "SeturContactList.Core\SeturContactList.Core.csproj", "{D62BFB7E-6B2C-41C1-8478-A1CDDE8C8B47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeturContactList.Service", "SeturContactList.Service\SeturContactList.Service.csproj", "{9CF850B4-48B0-4536-9B37-E371DE23FE49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeturContactList.Service", "SeturContactList.Service\SeturContactList.Service.csproj", "{9CF850B4-48B0-4536-9B37-E371DE23FE49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeturContactList.Report", "SeturContactList.Report\SeturContactList.Report.csproj", "{931ADCB6-7CCA-4DEE-BF97-86EB4C8ED9CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeturContactList.Report", "SeturContactList.Report\SeturContactList.Report.csproj", "{931ADCB6-7CCA-4DEE-BF97-86EB4C8ED9CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeturContactList.UnitTest", "SeturContactList.UnitTest\SeturContactList.UnitTest.csproj", "{3D7951A8-F16F-45C2-A5FE-DAA5253C787F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{931ADCB6-7CCA-4DEE-BF97-86EB4C8ED9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{931ADCB6-7CCA-4DEE-BF97-86EB4C8ED9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{931ADCB6-7CCA-4DEE-BF97-86EB4C8ED9CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D7951A8-F16F-45C2-A5FE-DAA5253C787F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D7951A8-F16F-45C2-A5FE-DAA5253C787F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D7951A8-F16F-45C2-A5FE-DAA5253C787F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D7951A8-F16F-45C2-A5FE-DAA5253C787F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
