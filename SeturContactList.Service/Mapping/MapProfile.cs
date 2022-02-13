@@ -16,6 +16,8 @@ namespace SeturContactList.Service.Mapping
             CreateMap<Persons, PersonDto>().ReverseMap();
             CreateMap<Persons, PersonsWithPersonContractListDto>().ReverseMap();
             CreateMap<PersonContacts, PersonContactDto>().ReverseMap();
+            CreateMap<Reports, ReportDto>().ReverseMap();
+            CreateMap<ReportDetail, ReportDetailDto>().ReverseMap();
         }
     }
 }

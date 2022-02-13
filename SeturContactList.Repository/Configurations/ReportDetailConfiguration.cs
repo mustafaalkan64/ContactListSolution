@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SeturContactList.Core.Dtos;
 using SeturContactList.Core.Entities;
 
 namespace SeturContactList.Repository.Configurations
