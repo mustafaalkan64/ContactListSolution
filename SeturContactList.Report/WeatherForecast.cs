@@ -1,6 +1,6 @@
 using System;
 
-namespace SeturContactListSolution
+namespace SeturContactList.Report
 {
     public class WeatherForecast
     {

@@ -13,7 +13,6 @@ namespace SeturContactList.Service.Validations
         public PersonContactDtoValidator()
         {
 
-            RuleFor(x => x.Phone).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
             RuleFor(x => x.Phone).MaximumLength(50).WithMessage("{PropertyName} max length should be 50");
             RuleFor(x => x.Email).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
             RuleFor(x => x.Email).MaximumLength(50).WithMessage("{PropertyName} max length should be 50");

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SeturContactList.Repository;
@@ -9,9 +10,10 @@ using SeturContactList.Repository;
 namespace SeturContactList.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220213142636_ReportDetailTable-Created")]
+    partial class ReportDetailTableCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +82,7 @@ namespace SeturContactList.Repository.Migrations
                             Id = 1,
                             Address = "İzmir Çiğli",
                             City = "İzmir",
-                            CreatedDate = new DateTime(2022, 2, 13, 17, 29, 46, 970, DateTimeKind.Local).AddTicks(3724),
+                            CreatedDate = new DateTime(2022, 2, 13, 17, 26, 35, 973, DateTimeKind.Local).AddTicks(4282),
                             Email = "mustafaalkan64@gmail.com",
                             Info = "Test Info",
                             Lat = 34m,
@@ -94,7 +96,7 @@ namespace SeturContactList.Repository.Migrations
                             Id = 2,
                             Address = "İzmir Bornova",
                             City = "İzmir",
-                            CreatedDate = new DateTime(2022, 2, 13, 17, 29, 46, 970, DateTimeKind.Local).AddTicks(3747),
+                            CreatedDate = new DateTime(2022, 2, 13, 17, 26, 35, 973, DateTimeKind.Local).AddTicks(4309),
                             Email = "mustafaalkan64@gmail.com",
                             Info = "Test Info",
                             Lat = 35m,
@@ -108,7 +110,7 @@ namespace SeturContactList.Repository.Migrations
                             Id = 3,
                             Address = "İzmir Çiğli",
                             City = "İzmir",
-                            CreatedDate = new DateTime(2022, 2, 13, 17, 29, 46, 970, DateTimeKind.Local).AddTicks(3751),
+                            CreatedDate = new DateTime(2022, 2, 13, 17, 26, 35, 973, DateTimeKind.Local).AddTicks(4315),
                             Email = "mustafaalkan64@gmail.com",
                             Info = "Test Info",
                             Lat = 34m,
@@ -122,7 +124,7 @@ namespace SeturContactList.Repository.Migrations
                             Id = 4,
                             Address = "İzmir Bornova",
                             City = "İzmir",
-                            CreatedDate = new DateTime(2022, 2, 13, 17, 29, 46, 970, DateTimeKind.Local).AddTicks(3753),
+                            CreatedDate = new DateTime(2022, 2, 13, 17, 26, 35, 973, DateTimeKind.Local).AddTicks(4319),
                             Email = "mustafaalkan64@gmail.com",
                             Info = "Test Info",
                             Lat = 35m,
@@ -170,7 +172,7 @@ namespace SeturContactList.Repository.Migrations
                         {
                             Id = 1,
                             Company = "TestCompany",
-                            CreatedDate = new DateTime(2022, 2, 13, 17, 29, 46, 965, DateTimeKind.Local).AddTicks(2354),
+                            CreatedDate = new DateTime(2022, 2, 13, 17, 26, 35, 968, DateTimeKind.Local).AddTicks(2287),
                             Name = "Mustafa",
                             Surname = "Alkan"
                         },
@@ -178,7 +180,7 @@ namespace SeturContactList.Repository.Migrations
                         {
                             Id = 2,
                             Company = "TestCompany1",
-                            CreatedDate = new DateTime(2022, 2, 13, 17, 29, 46, 969, DateTimeKind.Local).AddTicks(5856),
+                            CreatedDate = new DateTime(2022, 2, 13, 17, 26, 35, 972, DateTimeKind.Local).AddTicks(2577),
                             Name = "Ahmet",
                             Surname = "Alkan"
                         });
@@ -193,12 +195,6 @@ namespace SeturContactList.Repository.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<decimal>("Lat")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Long")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("RegisteredPersonCount")
                         .HasColumnType("integer");

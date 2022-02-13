@@ -17,9 +17,11 @@ namespace SeturContactListApi.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IPersonsService _personService;
-        private readonly IPersonContactService _personContactService;
+        private readonly IService<PersonContacts> _personContactService;
+        
+        //private readonly IPersonContactService _personContactService;
 
-        public PersonsController(IMapper mapper, IPersonsService personService, IPersonContactService personContactService)
+        public PersonsController(IMapper mapper, IPersonsService personService, IService<PersonContacts> personContactService)
         {
 
             _mapper = mapper;
@@ -90,10 +92,5 @@ namespace SeturContactListApi.Controllers
             await _personContactService.RemoveAsync(personContact);
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
-
-
-
-       
-
     }
 }

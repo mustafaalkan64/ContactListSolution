@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace SeturContactList.Core.Dtos
 {
-    public class PersonDto: BaseDto
+    public class LocationDto
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Company { get; set; }
+        public decimal Lat { get; set; }
+        public decimal Long { get; set; }
     }
-
 }

@@ -9,7 +9,7 @@ namespace SeturContactList.Repository.Configurations
         public void Configure(EntityTypeBuilder<PersonContacts> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Phone).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.Phone).HasMaxLength(50);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(50);
             builder.Property(x => x.City).IsRequired().HasMaxLength(50);
             builder.Property(x => x.Town).IsRequired().HasMaxLength(50);

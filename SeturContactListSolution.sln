@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeturContactList.Core", "Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeturContactList.Service", "SeturContactList.Service\SeturContactList.Service.csproj", "{9CF850B4-48B0-4536-9B37-E371DE23FE49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeturContactList.Report", "SeturContactList.Report\SeturContactList.Report.csproj", "{931ADCB6-7CCA-4DEE-BF97-86EB4C8ED9CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9CF850B4-48B0-4536-9B37-E371DE23FE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CF850B4-48B0-4536-9B37-E371DE23FE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CF850B4-48B0-4536-9B37-E371DE23FE49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{931ADCB6-7CCA-4DEE-BF97-86EB4C8ED9CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{931ADCB6-7CCA-4DEE-BF97-86EB4C8ED9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{931ADCB6-7CCA-4DEE-BF97-86EB4C8ED9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{931ADCB6-7CCA-4DEE-BF97-86EB4C8ED9CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

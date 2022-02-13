@@ -8,7 +8,8 @@ namespace SeturContactList.Core.Entities
 {
     public class Reports: BaseEntity
     {
-        public Guid UUID { get; set; }
+        public DateTime RequestedDate { get; set; }
         public ReportStatusEnum ReportStatus { get; set; }
+        public ReportDetail ReportDetail { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -53,6 +54,16 @@ namespace SeturContactListSolution
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SeturContactListSolution", Version = "v1" });
             });
 
+            services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(Configuration.GetConnectionString("RabbitMQ"));
+                });
+            });
+
+            services.AddMassTransitHostedService();
+
             //Automapper
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -68,8 +79,6 @@ namespace SeturContactListSolution
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(IService<>), typeof(Service<>));
             services.AddTransient<IPersonsRepository, PersonsRepository>();
-            services.AddTransient<IPersonContactRepository, PersonContactRepository>();
-            services.AddTransient<IPersonContactService, PersonContactService>();
             services.AddTransient<IPersonsService, PersonsService>();
             services.AddScoped(typeof(NotFoundFilter<>));
         }

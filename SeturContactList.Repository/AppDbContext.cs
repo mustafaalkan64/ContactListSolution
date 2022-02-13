@@ -20,6 +20,7 @@ namespace SeturContactList.Repository
         public DbSet<Persons> Persons { get; set; }
         public DbSet<PersonContacts> PersonContacts { get; set; }
         public DbSet<Reports> Reports { get; set; }
+        public DbSet<ReportDetail> ReportDetail { get; set; }
 
         public override int SaveChanges()
         {
@@ -89,7 +90,6 @@ namespace SeturContactList.Repository
             modelBuilder.Entity<Persons>().HasData(new Persons()
             {
                 Id = 1,
-                UUID = Guid.NewGuid(),
                 Name = "Mustafa",
                 Surname = "Alkan",
                 Company = "TestCompany",
@@ -99,7 +99,6 @@ namespace SeturContactList.Repository
             modelBuilder.Entity<Persons>().HasData(new Persons()
             {
                 Id = 2,
-                UUID = Guid.NewGuid(),
                 Name = "Ahmet",
                 Surname = "Alkan",
                 Company = "TestCompany1",
