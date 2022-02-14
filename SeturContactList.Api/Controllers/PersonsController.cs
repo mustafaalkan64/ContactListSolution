@@ -96,7 +96,7 @@ namespace SeturContactList.Api.Controllers
         public async Task<IActionResult> GetPersonContact(int id)
         {
             var personContact = await _personContactService.GetByIdAsync(id);
-            return CreateActionResult(CustomResponseDto<PersonContacts>.Success(204, personContact));
+            return CreateActionResult(CustomResponseDto<PersonContacts>.Success(201, personContact));
         }
     }
 }

@@ -24,11 +24,11 @@ using SeturContactList.Service.Mapping;
 using SeturContactList.Service.Services;
 using SeturContactList.Service.Validations;
 using SeturContactList.Api.Filters;
-using SeturContactList.Api.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SeturContactList.Service;
 
 namespace SeturContactList.Api
 {

@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using SeturContactList.Core.Events;
 using SeturContactList.Report.Consumers;
 using SeturContactList.Repository;
+using SeturContactList.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,6 +77,8 @@ namespace SeturContactList.Report
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

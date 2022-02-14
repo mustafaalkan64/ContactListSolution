@@ -9,7 +9,7 @@ using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace SeturContactList.Api.Middlewares
+namespace SeturContactList.Service
 {
     public class ErrorHandlerMiddleware
     {
