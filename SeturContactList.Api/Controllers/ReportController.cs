@@ -7,13 +7,13 @@ using SeturContactList.Core.Dtos;
 using SeturContactList.Core.Entities;
 using SeturContactList.Core.Events;
 using SeturContactList.Core.Services;
-using SeturContactListApi.Filters;
+using SeturContactList.Api.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SeturContactListApi.Controllers
+namespace SeturContactList.Api.Controllers
 {
 
     public class ReportController : CustomBaseController

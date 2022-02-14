@@ -11,7 +11,7 @@ using SeturContactList.Service.Exceptions;
 using SeturContactList.Service.Mapping;
 using SeturContactList.Service.Services;
 using SeturContactList.Service.Validations;
-using SeturContactListApi.Controllers;
+using SeturContactList.Api.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

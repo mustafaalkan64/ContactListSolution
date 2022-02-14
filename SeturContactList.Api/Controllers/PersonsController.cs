@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SeturContactList.Api.Filters;
 using SeturContactList.Core.Dtos;
 using SeturContactList.Core.Entities;
 using SeturContactList.Core.Services;
-using SeturContactListApi.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SeturContactListApi.Controllers
+namespace SeturContactList.Api.Controllers
 {
 
     public class PersonsController : CustomBaseController
@@ -18,7 +18,7 @@ namespace SeturContactListApi.Controllers
         private readonly IMapper _mapper;
         private readonly IPersonsService _personService;
         private readonly IService<PersonContacts> _personContactService;
-        
+
         public PersonsController(IMapper mapper, IPersonsService personService, IService<PersonContacts> personContactService)
         {
 

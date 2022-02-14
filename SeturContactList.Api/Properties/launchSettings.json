@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:24587",
-      "sslPort": 44336
+      "applicationUrl": "http://localhost:52368",
+      "sslPort": 44378
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "SeturContactListSolution": {
+    "SeturContactList.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

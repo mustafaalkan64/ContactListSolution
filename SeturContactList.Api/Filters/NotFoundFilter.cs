@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SeturContactListApi.Filters
+namespace SeturContactList.Api.Filters
 {
     public class NotFoundFilter<T> : IAsyncActionFilter where T : BaseEntity
     {

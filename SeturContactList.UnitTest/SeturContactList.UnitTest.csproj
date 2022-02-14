@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SeturContactListSolution\SeturContactListApi.csproj" />
+    <ProjectReference Include="..\SeturContactList.Api\SeturContactList.Api.csproj" />
   </ItemGroup>
 
 </Project>
