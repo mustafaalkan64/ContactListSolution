@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation.TestHelper;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using SeturContactList.Core.Dtos;
@@ -8,6 +9,7 @@ using SeturContactList.Core.Services;
 using SeturContactList.Core.UnitOfWork;
 using SeturContactList.Service.Mapping;
 using SeturContactList.Service.Services;
+using SeturContactList.Service.Validations;
 using SeturContactListApi.Controllers;
 using System;
 using System.Collections.Generic;
@@ -29,7 +31,13 @@ namespace SeturContactList.UnitTest
         private readonly Mock<IPersonsService> _personsService;
         private readonly IMapper mapper;
         private List<Persons> persons;
+        private List<PersonContacts> personContacts;
+        private PersonDtoValidator personDtoValidator;
+        private PersonContactDtoValidator personContactDtoValidator;
         private Persons newPerson;
+        private PersonContacts newPersonContact;
+        private PersonContacts invalidPersonContact;
+        private Persons invalidPerson;
         public PersonApiControllerTest()
         {
             var myProfile = new MapProfile();
@@ -42,6 +50,8 @@ namespace SeturContactList.UnitTest
             _mockPersonContactRepo = new Mock<IGenericRepository<PersonContacts>>();
             _mockPersonContactService = new Mock<IService<PersonContacts>>();
             _personsService = new Mock<IPersonsService>();
+            personDtoValidator = new PersonDtoValidator();
+            personContactDtoValidator = new PersonContactDtoValidator();
             _controller = new PersonsController(mapper, _personsService.Object, _mockPersonContactService.Object);
             persons = new List<Persons>() { new Persons()
             {
@@ -49,15 +59,84 @@ namespace SeturContactList.UnitTest
                 Name = "Mustafa",
                 Surname = "Alkan",
                 Company = "TestCompany",
-                CreatedDate = DateTime.Now
+                CreatedDate = DateTime.Now,
+                PersonContacts = new List<PersonContacts>()
+                {
+                    new PersonContacts()
+                    {
+                        City = "İzmir",
+                        Town = "Bornova",
+                        Email = "mustafaalkan64@gmail.com",
+                        PersonId = 1,
+                        Phone = "5553332211",
+                        Lat = 35,
+                        Long = 28,
+                        CreatedDate = DateTime.Now,
+                    },
+                    new PersonContacts()
+                    {
+                        City = "İzmir",
+                        Town = "Konak",
+                        Email = "mustafaalkan64@gmail.com",
+                        PersonId = 1,
+                        Phone = "5553332211",
+                        Lat = 35,
+                        Long = 28,
+                        CreatedDate = DateTime.Now,
+                    }
+                }
             },new Persons()
             {
                 Id = 2,
                 Name = "Ahmet",
                 Surname = "Alkan",
                 Company = "TestCompany1",
-                CreatedDate = DateTime.Now
+                CreatedDate = DateTime.Now,
+                PersonContacts = new List<PersonContacts>()
+                {
+                    new PersonContacts()
+                    {
+                        City = "İzmir",
+                        Town = "Bornova",
+                        Email = "mustafaalkan64@gmail.com",
+                        PersonId = 1,
+                        Phone = "5553332211",
+                        Lat = 35,
+                        Long = 28,
+                        CreatedDate = DateTime.Now,
+                    }
+                }
             } };
+
+            personContacts = new List<PersonContacts>()
+            {
+                 new PersonContacts()
+                    {
+                        Id = 1,
+                        City = "İzmir",
+                        Town = "Bornova",
+                        Email = "mustafaalkan64@gmail.com",
+                        PersonId = 1,
+                        Phone = "5553332211",
+                        Lat = 35,
+                        Long = 28,
+                        Address = "Addresss",
+                        CreatedDate = DateTime.Now,
+                    },
+                    new PersonContacts()
+                    {
+                        Id = 2,
+                        City = "İzmir",
+                        Town = "Bornova",
+                        Email = "mustafaalkan64@gmail.com",
+                        PersonId = 2,
+                        Phone = "5553332211",
+                        Lat = 35,
+                        Long = 28,
+                        Address = "Addresss",
+                        CreatedDate = DateTime.Now,
+                    }
+            };
 
             newPerson = new Persons()
             {
@@ -68,10 +147,48 @@ namespace SeturContactList.UnitTest
                 CreatedDate = DateTime.Now
             };
 
+            newPersonContact = new PersonContacts()
+            {
+                Id = 3,
+                City = "İzmir",
+                Town = "Bornova",
+                Email = "mustafaalkan64@gmail.com",
+                PersonId = 1,
+                Phone = "5553332211",
+                Lat = 35,
+                Long = 28,
+                Address = "Addresss",
+                CreatedDate = DateTime.Now,
+            };
+
+
+            invalidPersonContact = new PersonContacts()
+            {
+                Id = 3,
+                City = "",
+                Town = "",
+                Email = "inValidEmail",
+                PersonId = 1,
+                Phone = "5553332211",
+                Lat = 35,
+                Long = 28,
+                Address = "Addresss",
+                CreatedDate = DateTime.Now,
+            };
+
+            invalidPerson = new Persons()
+            {
+                Id = 3,
+                Name = "",
+                Surname = "",
+                Company = "TestCompany",
+                CreatedDate = DateTime.Now
+            };
+
         }
 
         [Fact]
-        public async void GetProduct_ActionExecutes_ReturnOkResultWithProduct()
+        public async void GetPerson_ActionExecutes_ReturnOkResultWithPerson()
         {
             _personsService.Setup(x => x.GetAllAsync()).ReturnsAsync(persons);
 
@@ -113,7 +230,10 @@ namespace SeturContactList.UnitTest
 
             var returnPerson = Assert.IsType<CustomResponseDto<PersonsWithPersonContractListDto>>(okResult.Value);
 
+            _personsService.Verify(x => x.GetPersonsWithPersonContractListByPersonId(personId), Times.Once);
+            
             Assert.Equal(personId, returnPerson.Data.Id);
+            Assert.True(returnPerson.Data.PersonContacts.Count() >= 1);
             Assert.Equal(person.Name, returnPerson.Data.Name);
         }
 
@@ -124,6 +244,12 @@ namespace SeturContactList.UnitTest
             _personsService.Setup(x => x.AddAsync(newPerson)).ReturnsAsync(newPerson);
 
             var personDto = mapper.Map<PersonDto>(newPerson);
+            
+            var validateResult = personDtoValidator.TestValidate(personDto);
+            validateResult.ShouldNotHaveValidationErrorFor(person => person.Name);
+            validateResult.ShouldNotHaveValidationErrorFor(person => person.Surname);
+            validateResult.ShouldNotHaveValidationErrorFor(person => person.Company);
+
             var result = await _controller.Save(personDto);
 
             var createdResult = Assert.IsType<ObjectResult>(result);
@@ -131,6 +257,86 @@ namespace SeturContactList.UnitTest
 
             Assert.Equal(201, createdResult.StatusCode);
 
+        }
+
+
+        [Fact]
+        public async void PostInvalidPerson_ActionExecutes_ReturnErrors()
+        {
+            var personDto = mapper.Map<PersonDto>(invalidPerson);
+            var validateResult = await personDtoValidator.TestValidateAsync(personDto);
+            validateResult.ShouldHaveValidationErrorFor(person => person.Name);
+            validateResult.ShouldHaveValidationErrorFor(person => person.Surname);
+        }
+
+
+        [Theory]
+        [InlineData(1)]
+        public async void DeletePerson_ActionExecute_ReturnNoContent(int personId)
+        {
+            var person = persons.First(x => x.Id == personId);
+            _personsService.Setup(x => x.GetByIdAsync(personId)).ReturnsAsync(person);
+            _personsService.Setup(x => x.RemoveAsync(person));
+
+            var removedResult = await _controller.Remove(personId);
+
+            var objectResult = Assert.IsType<ObjectResult>(removedResult);
+            Assert.Equal(204, objectResult.StatusCode);
+
+            _personsService.Verify(x => x.RemoveAsync(person), Times.Once);
+        }
+
+
+        [Fact]
+        public async void PostPersonContact_ActionExecutes_ReturnCustomResponseDto_WithPersonContactDto()
+        {
+            var person = persons.First(x => x.Id == newPersonContact.PersonId);
+            _personsService.Setup(x => x.GetByIdAsync(newPersonContact.PersonId)).ReturnsAsync(person);
+
+            _mockPersonContactService.Setup(x => x.AddAsync(newPersonContact)).ReturnsAsync(newPersonContact);
+
+            var personContactDto = mapper.Map<PersonContactDto>(newPersonContact);
+
+            var validateResult = personContactDtoValidator.TestValidate(personContactDto);
+            validateResult.ShouldNotHaveValidationErrorFor(person => person.Phone);
+            validateResult.ShouldNotHaveValidationErrorFor(person => person.City);
+            validateResult.ShouldNotHaveValidationErrorFor(person => person.Email);
+            validateResult.ShouldNotHaveValidationErrorFor(person => person.Town);
+
+            var result = await _controller.SavePersonContact(personContactDto);
+
+            var createdResult = Assert.IsType<ObjectResult>(result);
+            Assert.Equal(204, createdResult.StatusCode);
+            Assert.NotNull(person);
+        }
+
+        [Fact]
+        public async void PostInvalidPersonContactDto_ActionExecutes_ReturnErrors()
+        {
+            var personContactDto = mapper.Map<PersonContactDto>(invalidPersonContact);
+            
+            var validateResult = await personContactDtoValidator.TestValidateAsync(personContactDto);
+            validateResult.ShouldHaveValidationErrorFor(person => person.City);
+            validateResult.ShouldHaveValidationErrorFor(person => person.Town);
+            validateResult.ShouldHaveValidationErrorFor(person => person.Email);
+            validateResult.ShouldNotHaveValidationErrorFor(person => person.Phone);
+        }
+
+
+        [Theory]
+        [InlineData(1)]
+        public async void DeletePersonContact_ActionExecute_ReturnNoContent(int personContactId)
+        {
+            var personContact = personContacts.First(x => x.Id == personContactId);
+            _mockPersonContactService.Setup(x => x.GetByIdAsync(personContactId)).ReturnsAsync(personContact);
+            _mockPersonContactService.Setup(x => x.RemoveAsync(personContact));
+
+            var removedResult = await _controller.DeletePersonContact(personContactId);
+
+            var objectResult = Assert.IsType<ObjectResult>(removedResult);
+            Assert.Equal(204, objectResult.StatusCode);
+
+            _mockPersonContactService.Verify(x => x.RemoveAsync(personContact), Times.Once);
         }
     }
 }
