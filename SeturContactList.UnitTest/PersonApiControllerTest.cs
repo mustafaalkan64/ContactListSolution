@@ -7,6 +7,7 @@ using SeturContactList.Core.Entities;
 using SeturContactList.Core.Repositories;
 using SeturContactList.Core.Services;
 using SeturContactList.Core.UnitOfWork;
+using SeturContactList.Service.Exceptions;
 using SeturContactList.Service.Mapping;
 using SeturContactList.Service.Services;
 using SeturContactList.Service.Validations;
@@ -207,11 +208,13 @@ namespace SeturContactList.UnitTest
         {
             Persons person = null;
 
-            _personsService.Setup(x => x.GetPersonsWithPersonContractListByPersonId(personId)).ReturnsAsync(person);
+            _personsService.Setup(x => x.GetPersonsWithPersonContractListByPersonId(personId)).Throws(new NotFoundExcepiton($"Person ({personId}) not found"));
+            //Act 
+            Func<Task> act = () => _controller.GetById(personId);
+            //Assert
+            Exception ex = await Assert.ThrowsAsync<NotFoundExcepiton>(act);
 
-            var result = await _controller.GetById(personId);
-
-            Assert.IsType<NotFoundResult>(result);
+            Assert.Contains($"Person ({personId}) not found", ex.Message);
         }
 
 
@@ -288,7 +291,7 @@ namespace SeturContactList.UnitTest
 
 
         [Fact]
-        public async void PostPersonContact_ActionExecutes_ReturnCustomResponseDto_WithPersonContactDto()
+        public async void PostPersonContact_ActionExecutes_ReturnWithPersonContactId()
         {
             var person = persons.First(x => x.Id == newPersonContact.PersonId);
             _personsService.Setup(x => x.GetByIdAsync(newPersonContact.PersonId)).ReturnsAsync(person);
@@ -305,8 +308,8 @@ namespace SeturContactList.UnitTest
 
             var result = await _controller.SavePersonContact(personContactDto);
 
-            var createdResult = Assert.IsType<ObjectResult>(result);
-            Assert.Equal(204, createdResult.StatusCode);
+            var createdResult = Assert.IsType<OkObjectResult>(result);
+            Assert.Equal(200, createdResult.StatusCode);
             Assert.NotNull(person);
         }
 
@@ -331,12 +334,29 @@ namespace SeturContactList.UnitTest
             _mockPersonContactService.Setup(x => x.GetByIdAsync(personContactId)).ReturnsAsync(personContact);
             _mockPersonContactService.Setup(x => x.RemoveAsync(personContact));
 
-            var removedResult = await _controller.DeletePersonContact(personContactId);
-
-            var objectResult = Assert.IsType<ObjectResult>(removedResult);
-            Assert.Equal(204, objectResult.StatusCode);
+            var noContentResult = await _controller.DeletePersonContact(personContactId);
 
             _mockPersonContactService.Verify(x => x.RemoveAsync(personContact), Times.Once);
+
+            Assert.IsType<NoContentResult>(noContentResult);
+        }
+
+
+        [Theory]
+        [InlineData(100)]
+        public async void GetPersonContact_IdInValid_ReturnNotFound(int personContactId)
+        {
+            PersonContacts personContact = null;
+
+            _mockPersonContactService.Setup(x => x.GetByIdAsync(personContactId)).Throws(new NotFoundExcepiton($"PersonContact ({personContactId}) not found"));
+
+            //Act 
+            Func<Task> act = () => _controller.GetPersonContact(personContactId);
+
+            //Assert
+            Exception ex = await Assert.ThrowsAsync<NotFoundExcepiton>(act);
+
+            Assert.Contains($"PersonContact ({personContactId}) not found", ex.Message);
         }
     }
 }

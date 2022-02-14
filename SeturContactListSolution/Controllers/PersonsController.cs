@@ -19,8 +19,6 @@ namespace SeturContactListApi.Controllers
         private readonly IPersonsService _personService;
         private readonly IService<PersonContacts> _personContactService;
         
-        //private readonly IPersonContactService _personContactService;
-
         public PersonsController(IMapper mapper, IPersonsService personService, IService<PersonContacts> personContactService)
         {
 
@@ -53,10 +51,6 @@ namespace SeturContactListApi.Controllers
         {
             var person = await _personService.GetPersonsWithPersonContractListByPersonId(id);
             var personsDto = _mapper.Map<PersonsWithPersonContractListDto>(person);
-            if(personsDto == null)
-            {
-                return new NotFoundResult();
-            }
             return CreateActionResult(CustomResponseDto<PersonsWithPersonContractListDto>.Success(200, personsDto));
         }
 
@@ -84,7 +78,7 @@ namespace SeturContactListApi.Controllers
             //var person = await _personService.GetByIdAsync(personContactDto.PersonId);
             var personContact = _mapper.Map<PersonContacts>(personContactDto);
             await _personContactService.AddAsync(personContact);
-            return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
+            return Ok(personContact.Id);
         }
 
 
@@ -94,7 +88,15 @@ namespace SeturContactListApi.Controllers
         {
             var personContact = await _personContactService.GetByIdAsync(id);
             await _personContactService.RemoveAsync(personContact);
-            return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
+            return NoContent();
+        }
+
+
+        [HttpGet("getPersonContact")]
+        public async Task<IActionResult> GetPersonContact(int id)
+        {
+            var personContact = await _personContactService.GetByIdAsync(id);
+            return CreateActionResult(CustomResponseDto<PersonContacts>.Success(204, personContact));
         }
     }
 }
