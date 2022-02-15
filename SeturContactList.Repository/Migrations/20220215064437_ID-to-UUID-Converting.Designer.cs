@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SeturContactList.Repository;
@@ -9,13 +10,13 @@ using SeturContactList.Repository;
 namespace SeturContactList.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220215064437_ID-to-UUID-Converting")]
+    partial class IDtoUUIDConverting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasPostgresExtension("uuid-ossp")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -24,9 +25,7 @@ namespace SeturContactList.Repository.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id")
-                        .HasDefaultValueSql("uuid_generate_v4()");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Address")
                         .HasMaxLength(500)
@@ -79,57 +78,57 @@ namespace SeturContactList.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ab2c1f81-fb35-4b92-87ae-d1aef68ea84c"),
+                            Id = new Guid("7c11be34-1773-435b-b7b0-b84d0c18eb39"),
                             Address = "İzmir Çiğli",
                             City = "İzmir",
-                            CreatedDate = new DateTime(2022, 2, 15, 10, 27, 19, 109, DateTimeKind.Local).AddTicks(9805),
+                            CreatedDate = new DateTime(2022, 2, 15, 9, 44, 36, 399, DateTimeKind.Local).AddTicks(2974),
                             Email = "mustafaalkan64@gmail.com",
                             Info = "Test Info",
                             Lat = 34m,
                             Long = 27m,
-                            PersonId = new Guid("f8e5d8ce-0259-41ef-8db9-1de0dc5ce904"),
+                            PersonId = new Guid("dad62457-1466-40e7-8d47-bb91f583cabb"),
                             Phone = "+905553332211",
                             Town = "Çiğli"
                         },
                         new
                         {
-                            Id = new Guid("35a07a43-e05f-45a7-8e58-e2a6737fc7ed"),
+                            Id = new Guid("1a72b8c2-8fec-464f-933e-ad60f38a8d1c"),
                             Address = "İzmir Bornova",
                             City = "İzmir",
-                            CreatedDate = new DateTime(2022, 2, 15, 10, 27, 19, 109, DateTimeKind.Local).AddTicks(9840),
+                            CreatedDate = new DateTime(2022, 2, 15, 9, 44, 36, 399, DateTimeKind.Local).AddTicks(3017),
                             Email = "mustafaalkan64@gmail.com",
                             Info = "Test Info",
                             Lat = 34m,
                             Long = 27m,
-                            PersonId = new Guid("f8e5d8ce-0259-41ef-8db9-1de0dc5ce904"),
+                            PersonId = new Guid("dad62457-1466-40e7-8d47-bb91f583cabb"),
                             Phone = "+905553332212",
                             Town = "Bornova"
                         },
                         new
                         {
-                            Id = new Guid("08cc4476-20c1-40bf-ab83-f492de7b92af"),
+                            Id = new Guid("c44b45ab-2907-4bca-a84f-3a6b0b1dfb38"),
                             Address = "İzmir Çiğli",
                             City = "İzmir",
-                            CreatedDate = new DateTime(2022, 2, 15, 10, 27, 19, 109, DateTimeKind.Local).AddTicks(9846),
+                            CreatedDate = new DateTime(2022, 2, 15, 9, 44, 36, 399, DateTimeKind.Local).AddTicks(3027),
                             Email = "mustafaalkan64@gmail.com",
                             Info = "Test Info",
                             Lat = 38m,
                             Long = 26m,
-                            PersonId = new Guid("45881f50-4c69-4840-b588-1ed2a1a46e53"),
+                            PersonId = new Guid("03ca753f-eefd-46f5-b268-bf5fd7021971"),
                             Phone = "+905553332211",
                             Town = "Çiğli"
                         },
                         new
                         {
-                            Id = new Guid("70a273f6-c69d-42a2-ac95-4d2c9a2d9eee"),
+                            Id = new Guid("1e1ff757-137f-4182-935f-c40e3f4291f8"),
                             Address = "İzmir Bornova",
                             City = "İzmir",
-                            CreatedDate = new DateTime(2022, 2, 15, 10, 27, 19, 109, DateTimeKind.Local).AddTicks(9879),
+                            CreatedDate = new DateTime(2022, 2, 15, 9, 44, 36, 399, DateTimeKind.Local).AddTicks(3058),
                             Email = "mustafaalkan64@gmail.com",
                             Info = "Test Info",
                             Lat = 38m,
                             Long = 26m,
-                            PersonId = new Guid("f8e5d8ce-0259-41ef-8db9-1de0dc5ce904"),
+                            PersonId = new Guid("dad62457-1466-40e7-8d47-bb91f583cabb"),
                             Phone = "+905553332212",
                             Town = "Bornova"
                         });
@@ -139,9 +138,7 @@ namespace SeturContactList.Repository.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id")
-                        .HasDefaultValueSql("uuid_generate_v4()");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Company")
                         .IsRequired()
@@ -171,17 +168,17 @@ namespace SeturContactList.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f8e5d8ce-0259-41ef-8db9-1de0dc5ce904"),
+                            Id = new Guid("dad62457-1466-40e7-8d47-bb91f583cabb"),
                             Company = "TestCompany",
-                            CreatedDate = new DateTime(2022, 2, 15, 10, 27, 19, 106, DateTimeKind.Local).AddTicks(2400),
+                            CreatedDate = new DateTime(2022, 2, 15, 9, 44, 36, 394, DateTimeKind.Local).AddTicks(2859),
                             Name = "Mustafa",
                             Surname = "Alkan"
                         },
                         new
                         {
-                            Id = new Guid("45881f50-4c69-4840-b588-1ed2a1a46e53"),
+                            Id = new Guid("03ca753f-eefd-46f5-b268-bf5fd7021971"),
                             Company = "TestCompany1",
-                            CreatedDate = new DateTime(2022, 2, 15, 10, 27, 19, 109, DateTimeKind.Local).AddTicks(4652),
+                            CreatedDate = new DateTime(2022, 2, 15, 9, 44, 36, 398, DateTimeKind.Local).AddTicks(6303),
                             Name = "Ahmet",
                             Surname = "Alkan"
                         });
@@ -191,9 +188,7 @@ namespace SeturContactList.Repository.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id")
-                        .HasDefaultValueSql("uuid_generate_v4()");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
@@ -228,15 +223,12 @@ namespace SeturContactList.Repository.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("Id")
-                        .HasDefaultValueSql("uuid_generate_v4()");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int?>("ReportStatus")
-                        .IsRequired()
+                    b.Property<int>("ReportStatus")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("RequestedDate")

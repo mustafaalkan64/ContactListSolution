@@ -10,6 +10,6 @@ namespace SeturContactList.Core.Repositories
     public interface IPersonsRepository : IGenericRepository<Persons>
     {
         Task<List<Persons>> GetPersonsWithPersonContacts();
-        Task<Persons> GetPersonsWithPersonContactsByPersonId(int personId);
+        Task<Persons> GetPersonsWithPersonContactsByPersonId(Guid personId);
     }
 }

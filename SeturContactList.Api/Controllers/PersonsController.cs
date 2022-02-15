@@ -47,7 +47,7 @@ namespace SeturContactList.Api.Controllers
         [ServiceFilter(typeof(NotFoundFilter<Persons>))]
         // GET /api/products/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var person = await _personService.GetPersonsWithPersonContractListByPersonId(id);
             var personsDto = _mapper.Map<PersonsWithPersonContractListDto>(person);
@@ -57,6 +57,7 @@ namespace SeturContactList.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(PersonDto personDto)
         {
+            personDto.Id = Guid.NewGuid();
             var person = await _personService.AddAsync(_mapper.Map<Persons>(personDto));
             var personsDto = _mapper.Map<PersonDto>(person);
             return CreateActionResult(CustomResponseDto<PersonDto>.Success(201, personsDto));
@@ -64,7 +65,7 @@ namespace SeturContactList.Api.Controllers
 
         // DELETE api/persons/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Remove(int id)
+        public async Task<IActionResult> Remove(Guid id)
         {
             var person = await _personService.GetByIdAsync(id);
             await _personService.RemoveAsync(person);
@@ -84,7 +85,7 @@ namespace SeturContactList.Api.Controllers
 
 
         [HttpDelete("deletePersonContact")]
-        public async Task<IActionResult> DeletePersonContact(int id)
+        public async Task<IActionResult> DeletePersonContact(Guid id)
         {
             var personContact = await _personContactService.GetByIdAsync(id);
             await _personContactService.RemoveAsync(personContact);
@@ -93,7 +94,7 @@ namespace SeturContactList.Api.Controllers
 
 
         [HttpGet("getPersonContact")]
-        public async Task<IActionResult> GetPersonContact(int id)
+        public async Task<IActionResult> GetPersonContact(Guid id)
         {
             var personContact = await _personContactService.GetByIdAsync(id);
             return CreateActionResult(CustomResponseDto<PersonContacts>.Success(201, personContact));

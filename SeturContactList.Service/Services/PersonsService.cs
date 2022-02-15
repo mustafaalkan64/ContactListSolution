@@ -32,7 +32,7 @@ namespace SeturContactList.Service.Services
             return CustomResponseDto<List<PersonsWithPersonContractListDto>>.Success(200, personsDto);
         }
 
-        public async Task<Persons> GetPersonsWithPersonContractListByPersonId(int personId)
+        public async Task<Persons> GetPersonsWithPersonContractListByPersonId(Guid personId)
         {
             var person = await _personRepository.GetPersonsWithPersonContactsByPersonId(personId);
             if (person == null)

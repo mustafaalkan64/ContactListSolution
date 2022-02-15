@@ -84,12 +84,18 @@ namespace SeturContactList.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            // Addd the Postgres Extension for UUID generation
+            modelBuilder.HasPostgresExtension("uuid-ossp");
 
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            Guid firstPersonId = Guid.NewGuid();
+            Guid secondPersonId = Guid.NewGuid();
+            Guid firstReportId = Guid.NewGuid();
+            Guid secondReportId = Guid.NewGuid();
 
             modelBuilder.Entity<Persons>().HasData(new Persons()
             {
-                Id = 1,
+                Id = firstPersonId,
                 Name = "Mustafa",
                 Surname = "Alkan",
                 Company = "TestCompany",
@@ -98,7 +104,7 @@ namespace SeturContactList.Repository
 
             modelBuilder.Entity<Persons>().HasData(new Persons()
             {
-                Id = 2,
+                Id = secondPersonId,
                 Name = "Ahmet",
                 Surname = "Alkan",
                 Company = "TestCompany1",
@@ -107,10 +113,10 @@ namespace SeturContactList.Repository
 
             modelBuilder.Entity<PersonContacts>().HasData(new PersonContacts()
             {
-                Id = 1,
+                Id = Guid.NewGuid(),
                 Address = "İzmir Çiğli",
                 Email = "mustafaalkan64@gmail.com",
-                PersonId = 1,
+                PersonId = firstPersonId,
                 City = "İzmir",
                 Town = "Çiğli",
                 Info = "Test Info",
@@ -121,47 +127,85 @@ namespace SeturContactList.Repository
             },
             new PersonContacts()
             {
-                Id = 2,
+                Id = Guid.NewGuid(),
                 Address = "İzmir Bornova",
                 Email = "mustafaalkan64@gmail.com",
-                PersonId = 1,
+                PersonId = firstPersonId,
                 City = "İzmir",
                 Town = "Bornova",
                 Info = "Test Info",
                 Phone = "+905553332212",
-                Lat = 35,
-                Long = 28,
+                Lat = 34,
+                Long = 27,
                 CreatedDate = DateTime.Now
             },
              new PersonContacts()
              {
-                 Id = 3,
+                 Id = Guid.NewGuid(),
                  Address = "İzmir Çiğli",
                  Email = "mustafaalkan64@gmail.com",
-                 PersonId = 2,
+                 PersonId = secondPersonId,
                  City = "İzmir",
                  Town = "Çiğli",
                  Info = "Test Info",
                  Phone = "+905553332211",
-                 Lat = 34,
-                 Long = 27,
+                 Lat = 38,
+                 Long = 26,
                  CreatedDate = DateTime.Now
              },
             new PersonContacts()
             {
-                Id = 4,
+                Id = Guid.NewGuid(),
                 Address = "İzmir Bornova",
                 Email = "mustafaalkan64@gmail.com",
-                PersonId = 2,
+                PersonId = firstPersonId,
                 City = "İzmir",
                 Town = "Bornova",
                 Info = "Test Info",
                 Phone = "+905553332212",
-                Lat = 35,
-                Long = 28,
+                Lat = 38,
+                Long = 26,
                 CreatedDate = DateTime.Now
             }
             );
+
+            //modelBuilder.Entity<Reports>().HasData(new Reports()
+            //{
+            //    Id = firstReportId,
+            //    ReportStatus = (int)Core.ReportStatusEnum.Preparing,
+            //    RequestedDate = DateTime.Now,
+            //    CreatedDate = DateTime.Now
+            //},
+            //new Reports()
+            //{
+            //    Id = secondReportId,
+            //    ReportStatus = (int)Core.ReportStatusEnum.Preparing,
+            //    RequestedDate = DateTime.Now,
+            //    CreatedDate = DateTime.Now
+            //});
+
+
+            //modelBuilder.Entity<Reports>().HasData(new ReportDetail()
+            //{
+
+            //    Id = Guid.NewGuid(),
+            //    RegisteredPersonCount = 2,
+            //    RegisteredPhoneCount = 2,
+            //    ReportId = firstReportId,
+            //    Lat = 34,
+            //    Long = 27,
+            //    CreatedDate = DateTime.Now
+            //},
+            //new ReportDetail()
+            //{
+            //    Id = Guid.NewGuid(),
+            //    RegisteredPersonCount = 2,
+            //    RegisteredPhoneCount = 2,
+            //    ReportId = secondReportId,
+            //    Lat = 38,
+            //    Long = 26,
+            //    CreatedDate = DateTime.Now
+            //});
 
             base.OnModelCreating(modelBuilder);
         }

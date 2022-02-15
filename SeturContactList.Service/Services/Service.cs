@@ -48,7 +48,7 @@ namespace SeturContactList.Service.Services
             return await _repository.GetAll().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
             var hasProduct = await _repository.GetByIdAsync(id);
 

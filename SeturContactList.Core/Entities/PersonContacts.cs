@@ -17,7 +17,7 @@ namespace SeturContactList.Core.Entities
         public string Town { get; set; }
         public decimal Lat { get; set; }
         public decimal Long { get; set; }
-        public int PersonId { get; set; }
+        public Guid PersonId { get; set; }
         [ForeignKey("PersonId")]
         public Persons Person { get; set; }
     }

@@ -10,7 +10,7 @@ namespace SeturContactList.Core.Dtos
     {
         public int RegisteredPersonCount { get; set; }
         public int RegisteredPhoneCount { get; set; }
-        public int ReportId { get; set; }
+        public Guid ReportId { get; set; }
         public decimal Lat { get; set; }
         public decimal Long { get; set; }
     }

@@ -36,7 +36,7 @@ namespace SeturContactList.Api.Controllers
         {
             var newReportRequest = new Reports()
             {
-                ReportStatus = ReportStatusEnum.Preparing,
+                ReportStatus = (int)ReportStatusEnum.Preparing,
                 RequestedDate = DateTime.Now
             };
             await _reportService.AddAsync(newReportRequest);
@@ -61,7 +61,7 @@ namespace SeturContactList.Api.Controllers
         }
 
         [HttpGet("GetDetailByReportId/{id}")]
-        public async Task<IActionResult> GetDetailByReportId(int id)
+        public async Task<IActionResult> GetDetailByReportId(Guid id)
         {
             var reportDetails = _reportDetailService.Where(x => x.ReportId == id);
             var reportDetailDtos = _mapper.Map<List<ReportDetailDto>>(reportDetails.ToList());
