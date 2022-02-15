@@ -19,7 +19,8 @@ namespace SeturContactList.Repository.Configurations
 
             builder.Property(x => x.Lat).HasColumnType("decimal(18,2)");
             builder.Property(x => x.Long).HasColumnType("decimal(18,2)");
-            builder.HasOne(x => x.Report).WithOne(x => x.ReportDetail).HasForeignKey<ReportDetail>(x => x.ReportId);
+            builder.HasOne(x => x.Report).WithOne(x => x.ReportDetail);
+                //.HasForeignKey<ReportDetail>(x => x.ReportId);
         }
     }
 }

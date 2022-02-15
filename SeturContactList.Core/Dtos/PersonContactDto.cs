@@ -16,6 +16,6 @@ namespace SeturContactList.Core.Dtos
         public string Town { get; set; }
         public decimal Lat { get; set; }
         public decimal Long { get; set; }
-        public int PersonId { get; set; }
+        public Guid PersonId { get; set; }
     }
 }

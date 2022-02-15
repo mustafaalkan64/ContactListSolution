@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SeturContactList.Core;
 using SeturContactList.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -88,6 +89,7 @@ namespace SeturContactList.Repository
             modelBuilder.HasPostgresExtension("uuid-ossp");
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
             Guid firstPersonId = Guid.NewGuid();
             Guid secondPersonId = Guid.NewGuid();
             Guid firstReportId = Guid.NewGuid();
@@ -172,14 +174,14 @@ namespace SeturContactList.Repository
             //modelBuilder.Entity<Reports>().HasData(new Reports()
             //{
             //    Id = firstReportId,
-            //    ReportStatus = (int)Core.ReportStatusEnum.Preparing,
+            //    ReportStatus = ReportStatusEnum.Preparing,
             //    RequestedDate = DateTime.Now,
             //    CreatedDate = DateTime.Now
             //},
             //new Reports()
             //{
             //    Id = secondReportId,
-            //    ReportStatus = (int)Core.ReportStatusEnum.Preparing,
+            //    ReportStatus = ReportStatusEnum.Preparing,
             //    RequestedDate = DateTime.Now,
             //    CreatedDate = DateTime.Now
             //});

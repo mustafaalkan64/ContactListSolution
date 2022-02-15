@@ -10,12 +10,6 @@ namespace SeturContactList.Repository.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Id)
-                   .HasColumnName("Id")
-                   .HasColumnType("uuid")
-                   .HasDefaultValueSql("uuid_generate_v4()")    // Use 
-                   .IsRequired();
-
             builder.Property(x => x.ReportStatus).IsRequired();
         }
     }

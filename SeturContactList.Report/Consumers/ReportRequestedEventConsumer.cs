@@ -47,7 +47,7 @@ namespace SeturContactList.Report.Consumers
                 var report = _context.Reports.FirstOrDefault(x => x.Id == eventModel.ReportId);
                 if(report != null)
                 {
-                    report.ReportStatus = (int)ReportStatusEnum.Completed;
+                    report.ReportStatus = ReportStatusEnum.Completed;
                 }
                 await _context.SaveChangesAsync();
 

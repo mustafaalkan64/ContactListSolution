@@ -36,7 +36,8 @@ namespace SeturContactList.Api.Controllers
         {
             var newReportRequest = new Reports()
             {
-                ReportStatus = (int)ReportStatusEnum.Preparing,
+                Id = Guid.NewGuid(),
+                ReportStatus = ReportStatusEnum.Preparing,
                 RequestedDate = DateTime.Now
             };
             await _reportService.AddAsync(newReportRequest);
