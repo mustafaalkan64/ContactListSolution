@@ -22,15 +22,11 @@ namespace SeturContactList.Consumer.Consumers
         public async Task Consume(ConsumeContext<ReportRequestCreatedEvent> context)
         {
             var eventModel = context.Message;
-            var personCount = _context.PersonContacts.Where(x => x.Lat == eventModel.Lat && x.Long == eventModel.Long)
-                                                     .Select(x => x.PersonId).Distinct()
-                                                     .ToList()
-                                                     .Count();
+            var personContacts = _context.PersonContacts.Where(x => x.Lat == eventModel.Lat && x.Long == eventModel.Long);
+            
+            var personCount =  personContacts.Select(x => x.PersonId).Distinct().Count();
 
-            var phoneCount = _context.PersonContacts.Where(x => x.Lat == eventModel.Lat && x.Long == eventModel.Long && x.Phone != "")
-                                                     .Select(x => x.PersonId).Distinct()
-                                                     .ToList()
-                                                     .Count();
+            var phoneCount = personContacts.Where(x => x.Phone != "").Select(x => x.PersonId).Distinct().Count();
 
             using (var dbContextTransaction = _context.Database.BeginTransaction())
             {

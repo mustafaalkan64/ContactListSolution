@@ -149,6 +149,23 @@ namespace SeturContactList.UnitTest.Tests
 
         }
 
+
+        [Fact]
+        public async void PostReport_ActionExecutes_WithInvalidDto()
+        {
+            var locationDto = new LocationDto()
+            {
+                Lat = 0,
+                Long = 0
+            };
+            //Act 
+            Func<Task> act = () => _controller.CreateReportRequest(locationDto);
+            //Assert
+            Exception ex = await Assert.ThrowsAsync<ClientSideException>(act);
+
+            Assert.Contains($"Lokasyon Değerleri 0dan Büyük Olmalıdır", ex.Message);
+        }
+
         [Fact]
         public async void GetReportDetail_ActionExecutes_ReturnOkResultWithReportDetails()
         {

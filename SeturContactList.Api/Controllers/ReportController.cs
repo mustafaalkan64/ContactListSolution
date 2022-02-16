@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SeturContactList.Service.Exceptions;
 
 namespace SeturContactList.Api.Controllers
 {
@@ -34,6 +35,10 @@ namespace SeturContactList.Api.Controllers
         [HttpPost("CreateReportRequest")]
         public async Task<IActionResult> CreateReportRequest([FromBody] LocationDto locationDto)
         {
+            if(locationDto.Lat == 0 || locationDto.Long == 0)
+            {
+                throw new ClientSideException("Lokasyon Değerleri 0dan Büyük Olmalıdır");
+            }
             var newReportRequest = new Reports()
             {
                 Id = Guid.NewGuid(),
