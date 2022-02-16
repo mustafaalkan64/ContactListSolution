@@ -28,6 +28,7 @@ rapor detay bilgilerinin hesaplanıp dbye kaydedildiği bağımsız bir web proj
 - AutoMapper
 - XUnit Unit Test
 - Moq
+- EF Core InMemory DbContext
 
 ## Projede Kullanılan Tasarımlar ve Principlelar
 
