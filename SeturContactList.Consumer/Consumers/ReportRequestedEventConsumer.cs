@@ -34,14 +34,17 @@ namespace SeturContactList.Consumer.Consumers
 
             using (var dbContextTransaction = _context.Database.BeginTransaction())
             {
-                _context.ReportDetail.Add(new ReportDetail()
+                var newReportDetail = new ReportDetail()
                 {
+                    Id = Guid.NewGuid(),
                     Lat = eventModel.Lat,
                     Long = eventModel.Long,
                     RegisteredPersonCount = personCount,
                     RegisteredPhoneCount = phoneCount,
                     ReportId = eventModel.ReportId
-                });
+                };
+
+                _context.ReportDetail.Add(newReportDetail);
 
 
                 var report = _context.Reports.FirstOrDefault(x => x.Id == eventModel.ReportId);
