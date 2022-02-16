@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SeturContactList.Core.Events;
-using SeturContactList.Report.Consumers;
+using SeturContactList.Consumer.Consumers;
 using SeturContactList.Repository;
 using SeturContactList.Service;
 using System;
@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SeturContactList.Report
+namespace SeturContactList.Consumer
 {
     public class Startup
     {

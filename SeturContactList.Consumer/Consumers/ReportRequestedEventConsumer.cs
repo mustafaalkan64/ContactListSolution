@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SeturContactList.Report.Consumers
+namespace SeturContactList.Consumer.Consumers
 {
     public class ReportRequestedEventConsumer : IConsumer<ReportRequestCreatedEvent>
     {
