@@ -92,6 +92,7 @@ namespace SeturContactList.Repository
 
             Guid firstPersonId = Guid.NewGuid();
             Guid secondPersonId = Guid.NewGuid();
+            Guid thirdPersonId = Guid.NewGuid();
             Guid firstReportId = Guid.NewGuid();
             Guid secondReportId = Guid.NewGuid();
 
@@ -113,6 +114,8 @@ namespace SeturContactList.Repository
                 CreatedDate = DateTime.Now
             });
 
+
+
             modelBuilder.Entity<PersonContacts>().HasData(new PersonContacts()
             {
                 Id = Guid.NewGuid(),
@@ -123,7 +126,7 @@ namespace SeturContactList.Repository
                 Town = "Çiğli",
                 Info = "Test Info",
                 Phone = "+905553332211",
-                Lat = 34,
+                Lat = 35,
                 Long = 27,
                 CreatedDate = DateTime.Now
             },
@@ -132,12 +135,26 @@ namespace SeturContactList.Repository
                 Id = Guid.NewGuid(),
                 Address = "İzmir Bornova",
                 Email = "mustafaalkan64@gmail.com",
-                PersonId = firstPersonId,
+                PersonId = secondPersonId,
                 City = "İzmir",
                 Town = "Bornova",
                 Info = "Test Info",
                 Phone = "+905553332212",
-                Lat = 34,
+                Lat = 35,
+                Long = 27,
+                CreatedDate = DateTime.Now
+            },
+            new PersonContacts()
+            {
+                Id = Guid.NewGuid(),
+                Address = "İzmir Bornova",
+                Email = "mustafaalkan64@gmail.com",
+                PersonId = thirdPersonId,
+                City = "İzmir",
+                Town = "Bornova",
+                Info = "Test Info",
+                Phone = "",
+                Lat = 35,
                 Long = 27,
                 CreatedDate = DateTime.Now
             },
@@ -146,13 +163,13 @@ namespace SeturContactList.Repository
                  Id = Guid.NewGuid(),
                  Address = "İzmir Çiğli",
                  Email = "mustafaalkan64@gmail.com",
-                 PersonId = secondPersonId,
+                 PersonId = firstPersonId,
                  City = "İzmir",
                  Town = "Çiğli",
                  Info = "Test Info",
                  Phone = "+905553332211",
-                 Lat = 38,
-                 Long = 26,
+                 Lat = 34,
+                 Long = 28,
                  CreatedDate = DateTime.Now
              },
             new PersonContacts()
@@ -160,13 +177,27 @@ namespace SeturContactList.Repository
                 Id = Guid.NewGuid(),
                 Address = "İzmir Bornova",
                 Email = "mustafaalkan64@gmail.com",
-                PersonId = firstPersonId,
+                PersonId = secondPersonId,
                 City = "İzmir",
                 Town = "Bornova",
                 Info = "Test Info",
-                Phone = "+905553332212",
-                Lat = 38,
-                Long = 26,
+                Phone = "",
+                Lat = 34,
+                Long = 28,
+                CreatedDate = DateTime.Now
+            },
+            new PersonContacts()
+            {
+                Id = Guid.NewGuid(),
+                Address = "İzmir Bornova",
+                Email = "mustafaalkan64@gmail.com",
+                PersonId = thirdPersonId,
+                City = "İzmir",
+                Town = "Bornova",
+                Info = "Test Info",
+                Phone = "",
+                Lat = 34,
+                Long = 28,
                 CreatedDate = DateTime.Now
             }
             );

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.14" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -22,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SeturContactList.Api\SeturContactList.Api.csproj" />
+    <ProjectReference Include="..\SeturContactList.Consumer\SeturContactList.Consumer.csproj" />
   </ItemGroup>
 
 </Project>

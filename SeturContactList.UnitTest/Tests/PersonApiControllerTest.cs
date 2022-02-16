@@ -19,7 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace SeturContactList.UnitTest
+namespace SeturContactList.UnitTest.Tests
 {
     public class PersonApiControllerTest
     {

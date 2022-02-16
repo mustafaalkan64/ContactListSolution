@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 using Xunit;
 using MassTransit;
 
-namespace SeturContactList.UnitTest
+namespace SeturContactList.UnitTest.Tests
 {
     public class ReportApiControllerTest
     {
