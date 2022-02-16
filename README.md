@@ -37,6 +37,7 @@ rapor detay bilgilerinin hesaplanıp dbye kaydedildiği bağımsız bir web proj
 - UnitOfWork
 - SOLID
 - SOA 
+- Exception Middleware
 
 ## Projenin Ayağa Kaldırılması
 
