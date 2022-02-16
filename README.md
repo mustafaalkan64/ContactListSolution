@@ -13,9 +13,9 @@ Web Api projeleri :
 - Rapor Detaylarının Listelenmesi
 - Rapor İsteklerinin Yapılması
 
-## ContactList.Consume
+## ContactList.Consumer
 
-- ContactList.Api projesinden MassTransit ile RabbitMq queusine publish olan oluşturulmuş rapor isteklerinin consume edilerek,
+- ContactList.Api projesinden MassTransit ile RabbitMq queusine publish olan oluşturulmuş rapor taleplerini consume edilerek,
 rapor detay bilgilerinin hesaplanıp dbye kaydedildiği bağımsız bir web projesidir.
 
 ## Projede Kullanılan Teknolojiler
@@ -42,7 +42,7 @@ rapor detay bilgilerinin hesaplanıp dbye kaydedildiği bağımsız bir web proj
 
 ## Projenin Ayağa Kaldırılması
 
-- Her iki web projesi içerisindeki (SeturContactList.Api ve SeturContactList.Consume) appsettings.Development.json içindeki DefaultConnection connection string bilgilerini set edin.
+- Her iki web projesi içerisindeki (SeturContactList.Api ve SeturContactList.Consumer) appsettings.Development.json içindeki DefaultConnection connection string bilgilerini set edebilirsiniz. Şu an postgres test dataları cloud tabanlı sunucuda saklanmaktadır.
 - SeturContactList.Api projesine gelip Package-Manager-Console üzerinden Update-Database komutunu çalıştırın. Veya .NET CLI üzerinden dotnet ef database update komutunu çalıştırabilirisiniz.
 - Connection String bilgilerini girdiğiniz database üzerinde tabloları ve seed ettiğim dataları gördüyseniz, solution üzerinden gelip her iki projeyi multiple start ile başlatıp 
 RabbitMq ve MassTransit üzerinden her iki uygulamayı publish ve consume edebilirsiniz.
