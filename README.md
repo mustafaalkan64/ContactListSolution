@@ -46,3 +46,4 @@ rapor detay bilgilerinin hesaplanıp dbye kaydedildiği bağımsız bir web proj
 RabbitMq ve MassTransit üzerinden her iki uygulamayı publish ve consume edebilirsiniz.
 
 
+
