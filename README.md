@@ -22,7 +22,7 @@ rapor detay bilgilerinin hesaplanıp dbye kaydedildiği bağımsız bir web proj
  
 - Asp.net Core 5 Web Api
 - Postgres
-- Entity Framework Code First
+- EF Core Code First
 - Fluent Validation
 - Serilog ile File üzerinde loglama sağlanması
 - AutoMapper
@@ -31,6 +31,7 @@ rapor detay bilgilerinin hesaplanıp dbye kaydedildiği bağımsız bir web proj
 
 ## Projede Kullanılan Tasarımlar ve Principlelar
 
+- Rest Servisleri
 - Generic Repository
 - Generic Service
 - Depedency Injection
