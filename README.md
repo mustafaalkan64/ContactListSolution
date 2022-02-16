@@ -24,7 +24,7 @@ rapor detay bilgilerinin hesaplanıp dbye kaydedildiği bağımsız bir web proj
 - Postgres
 - EF Core Code First
 - Fluent Validation
-- Serilog ile File üzerinde loglama sağlanması
+- Serilog ile Loglama
 - AutoMapper
 - XUnit Unit Test
 - Moq
