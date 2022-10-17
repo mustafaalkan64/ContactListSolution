@@ -1,4 +1,4 @@
-# Contact List Case Çalışması
+# Contact List
 
 Bu proje 2 farklı web api projesinden ve farklı layerlardan oluşmaktadır.
 Web Api projeleri :
